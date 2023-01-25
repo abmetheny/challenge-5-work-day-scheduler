@@ -1,3 +1,22 @@
+var time9 = dayjs().hour(9).format('ha');
+$('#time9').text(time9);
+var time10 = dayjs().hour(10).format('ha');
+$('#time10').text(time10);
+var time11 = dayjs().hour(11).format('ha');
+$('#time11').text(time11);
+var time12 = dayjs().hour(12).format('ha');
+$('#time12').text(time12);
+var time1 = dayjs().hour(13).format('ha');
+$('#time1').text(time1);
+var time2 = dayjs().hour(14).format('ha');
+$('#time2').text(time2);
+var time3 = dayjs().hour(15).format('ha');
+$('#time3').text(time3);
+var time4 = dayjs().hour(16).format('ha');
+$('#time4').text(time4);
+var time5 = dayjs().hour(17).format('ha');
+$('#time5').text(time5);
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
