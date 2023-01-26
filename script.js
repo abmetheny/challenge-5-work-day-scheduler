@@ -32,17 +32,49 @@
   console.log(textClass);
   console.log(buttonClass);
 
+  var timeKeys = "";
+  var textValues = "";
+
+
+  var newItems = loadItems();
+  console.log(newItems);
+
+  function loadItems() {
+    var storedPairs = {...localStorage};
+    return storedPairs;
+
+  }
+
+
+
   for (let i = 0; i < timeArray.length; i++) {
+
     buttonClass[i].addEventListener("click", function(){
-      console.log("clicked", (i+9));
+      console.log("clicked", (i));
       // save textarea to local storage
-      var storedKey = (i+9);
+      var storedKey = (i);
       console.log(storedKey);
-      var storedValue = textClass.val();
+      var storedValue = $(textClass[i]).val();
       console.log(storedValue);
       localStorage.setItem(storedKey, storedValue);
       // populate textarea with local storage
+      var storedPairs = {...localStorage};
+      var timeKeys = Object.keys(storedPairs);
+      var textValues = Object.values(storedPairs);
+      // $('.text').text(storedValue);
+      console.log(timeKeys);
+      console.log(textValues);
+
+      
     })
+
+    console.log(textClass[i]);
+    console.log(typeof textClass);
+    console.log(newItems[i]);
+
+    textClass[i].textContent = newItems[i];
+    
+        
     if ((i+9) < currentHour) {
       $(textClass[i]).addClass('past');
       $(textClass[i]).removeClass('future');
@@ -65,6 +97,8 @@
     }
 
   }
+
+
 
   // });
 
