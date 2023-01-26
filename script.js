@@ -1,3 +1,8 @@
+$(function () {
+  
+var currentDay = dayjs().format('dddd, MMMM D');
+$('#currentDay').text(currentDay);
+
 var time9 = dayjs().hour(9).format('ha');
 $('#time9').text(time9);
 var time10 = dayjs().hour(10).format('ha');
@@ -16,6 +21,43 @@ var time4 = dayjs().hour(16).format('ha');
 $('#time4').text(time4);
 var time5 = dayjs().hour(17).format('ha');
 $('#time5').text(time5);
+
+var timeArray = [time9, time10, time11, time12, time1, time2, time3, time4, time5]
+var currentHour = dayjs().format('H');
+var textClass = $('.text');
+
+
+
+$(function () {
+  console.log(currentHour);
+  console.log(timeArray);
+
+  for (let i = 0; i < timeArray.length; i++) {
+    if (timeArray[i] == currentHour) {
+      $(textClass[i]).addClass('present');
+      $(textClass[i]).removeClass('past');
+      $(textClass[i]).removeClass('future');
+    }
+    else {
+      if (timeArray[i] < currentHour) {
+        $(textClass[i]).addClass('past');
+        $(textClass[i]).removeClass('future');
+        $(textClass[i]).removeClass('present');
+      }
+      if (timeArray[i] > currentHour) {
+        $(textClass[i]).addClass('future');
+        $(textClass[i]).removeClass('past');
+        $(textClass[i]).removeClass('present');
+      }
+    }
+  }
+
+})
+
+
+
+
+});
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
