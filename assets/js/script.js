@@ -38,11 +38,10 @@ function loadItems() {
   return storedPairs;
 }
 
-// Stores the time as a key and the event as a value, and does not allow blank entries to be saved
+// Upon clicking the save button, stores the time as a key and the event as a value, and does not allow blank entries to be saved
 for (let i = 0; i < timeArray.length; i++) {
 
   buttonClass[i].addEventListener("click", function(){
-    // save textarea to local storage
     var storedKey = (i);
     var storedValue = $(textClass[i]).val();
 
@@ -51,10 +50,6 @@ for (let i = 0; i < timeArray.length; i++) {
     }
     else {
       localStorage.setItem(storedKey, storedValue);
-      // populate textarea with local storage
-      var storedPairs = {...localStorage};
-      var timeKeys = Object.keys(storedPairs);
-      var textValues = Object.values(storedPairs);
     }
 
   })
