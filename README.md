@@ -26,6 +26,7 @@ Wrote HTML, JavaScript, and CSS files based on provided mockup and sample code:
 * Utilized Bootstrap and Google Fonts to apply certain styles to the page
 * Used JQuery and Day.js to populate calendar time blocks
 * Current day is displayed in the page header
+* Calendar is displayed in rows that contain a time (from 9am-5pm), a text area to input events, and a save button
 * Time blocks are color-coded depending on whether they are past, present, or future relative to the current time
 * New events cannot be saved in time blocks that are in the past or if the text field is blank
 * Events added to present or future time blocks are saved in local storage and persist if the page is reloaded
