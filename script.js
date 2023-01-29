@@ -1,7 +1,9 @@
 // $(function () {
+// Lists the current date in the header of the page
   var currentDay = dayjs().format('dddd, MMMM D');
   $('#currentDay').text(currentDay);
 
+// Populates working hours in the left-hand column
   var time9 = dayjs().hour(9).format('ha');
   $('#time9').text(time9);
   var time10 = dayjs().hour(10).format('ha');
@@ -21,6 +23,7 @@
   var time5 = dayjs().hour(17).format('ha');
   $('#time5').text(time5);
 
+// Variables for saving events in local storage and adding/removing classes based on current time
   var timeArray = [time9, time10, time11, time12, time1, time2, time3, time4, time5]
   var currentHour = dayjs().format('H');
   var textClass = $('.text');
@@ -35,18 +38,17 @@
   var timeKeys = "";
   var textValues = "";
 
-
+// Creates an array of time/event key value pairs
   var newItems = loadItems();
   console.log(newItems);
 
   function loadItems() {
     var storedPairs = {...localStorage};
     return storedPairs;
-
   }
 
 
-
+// Stores the time as a key and the event as a value, and does not allow blank entries to be saved
   for (let i = 0; i < timeArray.length; i++) {
 
     buttonClass[i].addEventListener("click", function(){
@@ -56,30 +58,36 @@
       console.log(storedKey);
       var storedValue = $(textClass[i]).val();
       console.log(storedValue);
-      localStorage.setItem(storedKey, storedValue);
-      // populate textarea with local storage
-      var storedPairs = {...localStorage};
-      var timeKeys = Object.keys(storedPairs);
-      var textValues = Object.values(storedPairs);
-      // $('.text').text(storedValue);
-      console.log(timeKeys);
-      console.log(textValues);
 
-      
+      if (storedValue == "") {
+        alert("Text area cannot be blank.")
+      }
+      else {
+        localStorage.setItem(storedKey, storedValue);
+        // populate textarea with local storage
+        var storedPairs = {...localStorage};
+        var timeKeys = Object.keys(storedPairs);
+        var textValues = Object.values(storedPairs);
+        console.log(timeKeys);
+        console.log(textValues);
+      }
+
     })
 
     console.log(textClass[i]);
     console.log(typeof textClass);
     console.log(newItems[i]);
 
+    // Populate the calendar at the respective key with the saved value
     textClass[i].textContent = newItems[i];
     
-        
+    // Adds and removes classes to color-code and enable/disable the save button depending on the current time    
     if ((i+9) < currentHour) {
       $(textClass[i]).addClass('past');
       $(textClass[i]).removeClass('future');
       $(textClass[i]).removeClass('present');
       // console.log("past");
+      $(buttonClass[i]).addClass('disable');
     }
 
     if ((i+9) > currentHour) {
@@ -87,6 +95,7 @@
       $(textClass[i]).removeClass('past');
       $(textClass[i]).removeClass('present');
       // console.log("future")
+      $(buttonClass[i]).removeClass('disable');
     }
 
     if ((i+9) == currentHour) {
@@ -94,6 +103,7 @@
       $(textClass[i]).removeClass('past');
       $(textClass[i]).removeClass('future');
       // console.log("present");
+      $(buttonClass[i]).removeClass('disable');
     }
 
   }

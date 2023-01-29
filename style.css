@@ -1,3 +1,7 @@
+.mb-4 {
+  padding: 1rem;
+}
+
 .container {
   padding-bottom: 20px;
 }
@@ -16,9 +20,20 @@
   color: black;
 }
 
+.disable {
+  pointer-events: none;
+}
+
 .height {
   height: 90%;
   margin: 0;
+}
+
+.col-1 p {
+  text-align: right;
+  border-top: 1px dashed #000000;
+  padding-right: 10px;
+  padding-top: 5px;
 }
 
 textarea {
@@ -35,12 +50,12 @@ textarea {
 
 .present {
   background-color: #ff6961;
-  color: white;
+  color: black;
 }
 
 .future {
   background-color: #77dd77;
-  color: white;
+  color: black;
 }
 
 /* body {
